@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0b0b">
+<title>NOIRÉ — Luxury Café</title>
+<style>
+:root{--bg:#090909;--panel:#121212;--gold:#d6ad62;--gold2:#f2d39a;--muted:#aaa;--line:#292929}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#fff;font-family:Inter,Arial,sans-serif}
+a{text-decoration:none;color:inherit}.container{width:min(1120px,92%);margin:auto}
+nav{position:fixed;z-index:20;top:0;left:0;right:0;background:rgba(9,9,9,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(214,173,98,.18)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}.logo{font-family:Georgia,serif;font-size:25px;letter-spacing:5px;color:var(--gold2)}
+.links{display:flex;gap:28px;color:#ddd;font-size:14px}.links a:hover{color:var(--gold2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border:1px solid var(--gold);color:#111;background:linear-gradient(135deg,var(--gold2),var(--gold));font-weight:700;border-radius:3px;cursor:pointer}
+.btn.outline{background:transparent;color:var(--gold2)}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.45)),url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1800&q=80') center/cover}
+.hero:after{content:"";position:absolute;inset:auto 0 0;height:160px;background:linear-gradient(transparent,var(--bg))}
+.hero h1{font:normal clamp(50px,9vw,100px)/.92 Georgia,serif;margin:18px 0;color:#fff}.eyebrow{color:var(--gold2);letter-spacing:4px;text-transform:uppercase;font-size:12px}.hero p{max-width:560px;color:#ccc;font-size:17px;line-height:1.8}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+section{padding:95px 0}.section-head{text-align:center;margin-bottom:42px}.section-head span{color:var(--gold);letter-spacing:3px;font-size:11px;text-transform:uppercase}.section-head h2{font:normal 46px Georgia,serif;margin:10px 0}.section-head p{color:var(--muted)}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--panel);border:1px solid var(--line);overflow:hidden;transition:.3s}.card:hover{transform:translateY(-5px);border-color:#80683e}.card img{width:100%;height:210px;object-fit:cover}.card-body{padding:20px}.card h3{margin:0 0 8px;font:24px Georgia,serif}.desc{color:#999;font-size:13px;line-height:1.6;min-height:42px}.price{color:var(--gold2);font-weight:700;font-size:18px;margin-top:15px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}.about img{width:100%;height:500px;object-fit:cover;border:1px solid #302819}.about h2{font:normal 48px Georgia,serif}.about p{color:#aaa;line-height:1.9}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feature{padding:28px;background:#0e0e0e;border:1px solid var(--line);text-align:center}.icon{font-size:27px;color:var(--gold2)}.feature h3{font-family:Georgia,serif}
+.booking{background:linear-gradient(rgba(8,8,8,.88),rgba(8,8,8,.95)),url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=80') center/cover}.booking-box{max-width:760px;margin:auto;padding:40px;background:rgba(18,18,18,.9);border:1px solid #4a3b22}.form{display:grid;grid-template-columns:1fr 1fr;gap:15px}.form input,.form select{width:100%;padding:15px;background:#0b0b0b;color:#eee;border:1px solid #333;outline:none}.form input:focus,.form select:focus{border-color:var(--gold)}.full{grid-column:1/-1}
+footer{padding:35px 0;border-top:1px solid var(--line);color:#777;text-align:center}.social{margin:15px;color:var(--gold2)}
+.float{position:fixed;right:18px;bottom:18px;z-index:30;width:55px;height:55px;border-radius:50%;display:grid;place-items:center;background:#caa45c;color:#111;font-weight:900;box-shadow:0 8px 30px #000}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:50;align-items:center;justify-content:center;padding:18px}.modal.open{display:flex}.modal-box{width:min(520px,100%);background:#111;border:1px solid #5a4827;padding:28px;position:relative}.close{position:absolute;right:16px;top:12px;background:none;border:0;color:#aaa;font-size:25px;cursor:pointer}
+@media(max-width:760px){.links{display:none}.nav{height:64px}.hero{min-height:92vh}.hero h1{font-size:58px}.menu-grid,.features,.about{grid-template-columns:1fr}.about img{height:330px}.form{grid-template-columns:1fr}.full{grid-column:auto}section{padding:70px 0}.section-head h2{font-size:38px}}
+</style>
+</head>
+<body>
+<nav><div class="container nav"><a class="logo" href="#">NOIRÉ</a><div class="links"><a href="#menu">Menu</a><a href="#story">Our Story</a><a href="#booking">Reservation</a><a href="#contact">Contact</a></div><button class="btn" onclick="openBooking()">Book a Table</button></div></nav>
+
+<header class="hero">
+<div class="container">
+<div class="eyebrow">Riyadh · Since 2018</div>
+<h1>Luxury in<br><i>Every Sip.</i></h1>
+<p>A refined specialty coffee house where Arabian hospitality meets modern European craft. Slow mornings, intimate evenings, unforgettable flavors.</p>
+<div class="actions"><a class="btn" href="#menu">Explore Menu</a><button class="btn outline" onclick="openBooking()">Reserve Your Table</button></div>
+</div></header>
+
+<section id="menu"><div class="container"><div class="section-head"><span>Curated Selection</span><h2>Signature Menu</h2><p>Crafted with exceptional ingredients and served with elegance.</p></div>
+<div class="menu-grid">
+<div class="card"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80"><div class="card-body"><h3>Velvet Latte</h3><div class="desc">Silky espresso, steamed milk and a delicate caramel finish.</div><div class="price">SAR 28</div></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=80"><div class="card-body"><h3>Golden Croissant</h3><div class="desc">French butter pastry, baked fresh and finished with gold dust.</div><div class="price">SAR 24</div></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80"><div class="card-body"><h3>Noiré Cake</h3><div class="desc">Dark chocolate, espresso cream and roasted hazelnut.</div><div class="price">SAR 32</div></div></div>
+</div></div></section>
+
+<section id="story"><div class="container about"><img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1100&q=80"><div><span class="eyebrow">The Noiré Experience</span><h2>Where Coffee<br>Becomes Art.</h2><p>Designed for those who appreciate the finer things. Every detail—from our hand-selected beans to our warm Arabian-inspired interiors—is made to create an experience worth remembering.</p><a class="btn outline" href="#contact">Discover More</a></div></div></section>
+
+<section><div class="container"><div class="features"><div class="feature"><div class="icon">✦</div><h3>Premium Beans</h3><p class="desc">Single-origin beans roasted for depth and character.</p></div><div class="feature"><div class="icon">♜</div><h3>Private Moments</h3><p class="desc">Elegant spaces designed for meetings and intimate gatherings.</p></div><div class="feature"><div class="icon">◇</div><h3>Arabian Hospitality</h3><p class="desc">Warm service inspired by timeless local traditions.</p></div></div></div></section>
+
+<section id="booking" class="booking"><div class="container"><div class="section-head"><span>Reservations</span><h2>Reserve Your Table</h2><p>Make your evening at Noiré truly special.</p></div><div class="booking-box"><form class="form" onsubmit="submitBooking(event)"><input required placeholder="Your Name"><input required type="tel" placeholder="Phone Number"><input required type="date"><select required><option value="">Guests</option><option>2 Guests</option><option>3 Guests</option><option>4 Guests</option><option>5+ Guests</option></select><select class="full" required><option value="">Preferred Time</option><option>5:00 PM</option><option>6:30 PM</option><option>8:00 PM</option><option>9:30 PM</option></select><button class="btn full" type="submit">Confirm Reservation</button></form></div></div></section>
+
+<footer id="contact"><div class="container"><div class="logo">NOIRÉ</div><p>King Fahd Road · Riyadh, Saudi Arabia</p><div class="social">Instagram · WhatsApp · Snapchat</div><small>© 2026 Noiré Café. Demo concept.</small></div></footer>
+<a class="float" href="https://wa.me/966500000000" target="_blank" aria-label="WhatsApp">WA</a>
+
+<div class="modal" id="modal"><div class="modal-box"><button class="close" onclick="closeBooking()">×</button><div class="section-head"><span>Private Dining</span><h2>Book a Table</h2></div><form class="form" onsubmit="submitBooking(event)"><input required placeholder="Your Name"><input required type="tel" placeholder="Phone Number"><input required type="date"><select required><option value="">Guests</option><option>2 Guests</option><option>3 Guests</option><option>4 Guests</option><option>5+ Guests</option></select><button class="btn full">Request Booking</button></form></div></div>
+
+<script>
+const modal=document.getElementById('modal');
+function openBooking(){modal.classList.add('open')}
+function closeBooking(){modal.classList.remove('open')}
+modal.addEventListener('click',e=>{if(e.target===modal)closeBooking()});
+function submitBooking(e){e.preventDefault();alert('Thank you! Your reservation request has been received.');e.target.reset();closeBooking()}
+</script>
+</body>
+</html>
